@@ -72,10 +72,8 @@ exports.deleteBooks = (req, res) => {
     if (!id && !name) {
         return res.status(400).json({ message: "Please provide id or name" })
     }
-
     let condition = []
     let values = []
-
     if (id !== undefined) {
         condition.push(" id = ?");
         values.push(id)
@@ -92,12 +90,12 @@ exports.deleteBooks = (req, res) => {
             return res.status(400).json({ error: err.sqlMessage });
         }
 
-        if (result.affectedRows > 0){
-            res.status(200).json({ message: `${result.affectedRows} rows affected`});
-        }else{
-            res.status(200).json({message: "no match found"})
+        if (result.affectedRows > 0) {
+            res.status(200).json({ message: `${result.affectedRows} rows affected` });
+        } else {
+            res.status(200).json({ message: "no match found" })
         }
-     
+
     })
 
 }

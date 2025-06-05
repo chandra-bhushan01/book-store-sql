@@ -1,15 +1,12 @@
 const express = require("express")
-
-
+require('dotenv').config();
 const bookRouter = require("./route/bookRoutes");
+
 const app = express();
 
-
-
 app.use(express.json());
+app.use('/', bookRouter)
 
-app.use('/',bookRouter)
-
-app.listen(3000,()=>{
-    console.log(`app running on http://localhost:3000`)
+app.listen(process.env.PORT, () => {
+    console.log(`app running on http://localhost:${process.env.PORT}`)
 })
